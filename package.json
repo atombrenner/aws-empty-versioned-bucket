@@ -1,0 +1,22 @@
+{
+  "name": "s3-delete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node -T empty-bucket.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^1.0.0-beta.5",
+    "@aws-sdk/client-sts": "^1.0.0-alpha.2",
+    "typescript": "^3.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.42",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.10.2"
+  }
+}
