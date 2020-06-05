@@ -2,6 +2,8 @@ import { S3, ListObjectVersionsOutput, ObjectIdentifier } from '@aws-sdk/client-
 import { fromIni } from '@aws-sdk/credential-provider-ini'
 import { roleAssumer } from './role-assumer'
 
+// npx ts-node -T empt-bucket
+
 const Bucket = 'some-atombrenner-bucket'
 
 const s3 = new S3({

@@ -3,8 +3,9 @@
 You can't empty a versioned S3 bucket in the AWS console or with the aws-cli.
 The easiest and fastest way is to use the `listObjectVersions` API to enumerate
 all object versions and delete markers and delete them.
-Note that you must turn off versioning before running this script,
-else all deletes will create just more delete markers.
+Note that you should turn off versioning before running this script,
+else all deletes will create just more delete markers which may not be
+listed so that a second run of the script is necessary.
 
 Use `npm ci` to install prerequisites and `npm start` to execute it.
 Change the `Bucket` constant in [empty-bucket.ts](./empty-bucket.ts) to specify
