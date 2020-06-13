@@ -1,4 +1,4 @@
-import { S3, ListObjectVersionsOutput, ObjectIdentifier } from '@aws-sdk/client-s3'
+import { S3 } from '@aws-sdk/client-s3'
 import { fromIni } from '@aws-sdk/credential-provider-ini'
 import { roleAssumer } from './role-assumer'
 import { range } from 'remeda'
