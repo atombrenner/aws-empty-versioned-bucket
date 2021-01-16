@@ -14,6 +14,6 @@ which bucket should be emptied.
 This script uses the new [aws-sdk-js-v3](https://github.com/aws/aws-sdk-js-v3)
 which was written in typescript.
 
-Also this is an example of how to use async iterables and async generators.
+Also, this is an example of how to use async iterables and async generators.
 They are a great way to simplify the usage of paging APIs like list* and describe*,
 which are in fact async iterables.
