@@ -4,7 +4,8 @@ import { roleAssumer } from './role-assumer'
 
 // npx ts-node -T empty-bucket
 
-const Bucket = 'some-atombrenner-bucket'
+const Bucket = process.env.BUCKET ?? 'some-atombrenner-bucket'
+const Prefix = process.env.PREFIX ?? 'some-folder/'
 
 const s3 = new S3({
   region: 'eu-west-1',
@@ -20,6 +21,7 @@ async function* listObjectVersions() {
       Bucket,
       KeyMarker,
       VersionIdMarker,
+      Prefix,
     })
     KeyMarker = response.NextKeyMarker
     VersionIdMarker = response.NextVersionIdMarker
@@ -48,6 +50,9 @@ async function deleteObjects(Objects: ObjectIdentifier[]) {
   })
   if (response.Errors) errorCount += response.Errors.length
   if (response.Deleted) deleteCount += response.Deleted.length
+
+  // verbose logging
+  // Objects.forEach((o) => console.log(o.Key))
 
   const fmtNumber = (n: number) => n.toString().padStart(10)
   console.log(`Deleted: ${fmtNumber(deleteCount)} Errors: ${fmtNumber(errorCount)}`)

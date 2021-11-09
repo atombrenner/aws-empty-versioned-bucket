@@ -17,7 +17,7 @@ async function main() {
   for (let i = 0; i < 1100; i += step) {
     await Promise.all(
       range(i, i + step).map((i) =>
-        s3.putObject({ Bucket, Key: `${i}`, Body: `${i}`, ContentType: 'text/plain' })
+        s3.putObject({ Bucket, Key: `some-folder/${i}`, Body: `${i}`, ContentType: 'text/plain' })
       )
     )
     console.log(`put ${i + step} objects`)
