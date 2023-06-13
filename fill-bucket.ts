@@ -1,7 +1,6 @@
 import { S3 } from '@aws-sdk/client-s3'
 import { fromIni } from '@aws-sdk/credential-provider-ini'
 import { roleAssumer } from './role-assumer'
-import { range } from 'remeda'
 
 // npx ts-node -T fill-bucket
 
@@ -14,10 +13,16 @@ const s3 = new S3({
 
 async function main() {
   const step = 50
+  const range = new Array(step).fill(undefined)
   for (let i = 0; i < 1100; i += step) {
     await Promise.all(
-      range(i, i + step).map((i) =>
-        s3.putObject({ Bucket, Key: `some-folder/${i}`, Body: `${i}`, ContentType: 'text/plain' })
+      range.map((_, j) =>
+        s3.putObject({
+          Bucket,
+          Key: `some-folder/${i + j}`,
+          Body: `${i + j}`,
+          ContentType: 'text/plain',
+        })
       )
     )
     console.log(`put ${i + step} objects`)
